@@ -1,6 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
+  font-family: 'Antic Slab', serif;
+  color: black;
+}
+
+a{
+  text-decoration: none;
+  background-color: #756b27a9;
+  padding: 10px;
+  border-radius: 35%;
+  text-align: center;
 }
 
 header, footer{
@@ -14,23 +27,24 @@ header, footer{
 header img{
   width: 25%;
 }
+
 body{
   width: 80%;
   margin: auto;
-  table-layout: fixed;
   align-items: center;
   font-family: URW Chancery L, cursive;
+  color: #332d06;
   background: linear-gradient(to right top,  rgba(37, 126, 126, .7),  aquamarine, rgb(37, 126, 126, .7));
 }
 
 
 table{
-  width: 100%;
+  width: 960px;
   text-align: center;
-  border-radius: 20%;
+  border-radius: 30%;
   empty-cells: hide;
   padding: 20px 0;
-
+  overflow: auto;
 }
 
 main div img {
@@ -41,14 +55,17 @@ main div img {
 }
 
 td, th{
-  border-radius: 20%;
+  /* border-radius: 20%; */
   padding: 5px;
   border: dotted  rgba(37, 126, 126, .7);
+  font-family: 'RocknRoll One', sans-serif;
+  color: #75691f;
+  background-color: rgba(103, 164, 167,0.5);
 }
 
 
 th {
-  background-color: #62ad65;
+  background-color:#756b27a9;
   color: white;
   text-transform:uppercase;
 
@@ -64,7 +81,9 @@ th {
 h3{
   font-weight: bolder;
   text-transform:capitalize;
-  font-size: 150%;    
+  font-size: 70%;    
+  text-decoration: underline;
+  
 }
 
 main div ul{
@@ -82,7 +101,26 @@ main div:nth-child(2){
   padding: 20px 0;
 }
 
-fieldset{
-  border: dotted  rgb(37, 126, 126);
-  display: inline-block;
+.info article{
+  width:calc(100%/5);
+  float: left;
+  margin: 30px 0;
+  padding: 10px;
+  border: dotted rgba(37, 126, 126, .7);
+}
+
+
+hr{
+  clear: both;
+  height: 7px;
+  background-color:#756b27a9;
+  width: 100%;
+}
+
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+
 }
