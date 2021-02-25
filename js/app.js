@@ -8,14 +8,14 @@ const ParentElement = document.getElementById( 'shops' );//creat the table
 const tableElement = document.createElement( 'table' );
 ParentElement.appendChild( tableElement );
 
-const theadElement = document.createElement( 'thead' );//creat the table header
-tableElement.appendChild( theadElement );
+// const theadElement = document.createElement( 'thead' );//creat the table header
+// tableElement.appendChild( theadElement );
 
-const tbodyElement = document.createElement( 'tbody' );//creat the table body
-tableElement.appendChild( tbodyElement );
+// const tbodyElement = document.createElement( 'tbody' );//creat the table body
+// tableElement.appendChild( tbodyElement );
 
-const tfootElement = document.createElement( 'tfoot' );//creat the table footer
-tableElement.appendChild( tfootElement );
+// const tfootElement = document.createElement( 'tfoot' );//creat the table footer
+// tableElement.appendChild( tfootElement );
 
 
 function Shop( lacation, minCustomers, maxCustomers, avgCookieSale ) {
@@ -44,15 +44,15 @@ Shop.prototype.getNumberOfCookiesPerHour = function () {
 Shop.prototype.render = function () {
   this.getNumberOfCookiesPerHour();
 
-  const tbodyElement = document.createElement( 'tbody' );
-  tableElement.appendChild( tbodyElement );
+  // const tbodyElement = document.createElement( 'tbody' );//////>>>>>>>>>>
+  // tableElement.appendChild( tbodyElement );
 
   const tr2Element = document.createElement( 'tr' );
-  tbodyElement.appendChild( tr2Element );
+  tableElement.appendChild( tr2Element );
 
-  const thElement = document.createElement( 'th' );
-  tr2Element.appendChild( thElement );
-  thElement.textContent = this.lacation;
+  const tdElement = document.createElement( 'td' );
+  tr2Element.appendChild( tdElement );
+  tdElement.textContent = this.lacation;
 
   for ( let i = 0; i < this.NumberOfCookiesPerHour.length; i++ ) {
     const tdElement = document.createElement( 'td' );
@@ -67,11 +67,11 @@ Shop.prototype.render = function () {
 // Function to print table header
 function printTableHeader() {
 
-  const theadElement = document.createElement( 'thead' );
-  tableElement.appendChild( theadElement );
+  // const theadElement = document.createElement( 'thead' );
+  // tableElement.appendChild( theadElement );
 
   const tr1Element = document.createElement( 'tr' );
-  theadElement.appendChild( tr1Element );
+  tableElement.appendChild( tr1Element );
   const thElement = document.createElement( 'th' );
   tr1Element.appendChild( thElement );
   thElement.textContent = 'Location';
@@ -90,7 +90,7 @@ function printTableHeader() {
 function printTableFooter() {
 
   const tr8Element = document.createElement( 'tr' );
-  tfootElement.appendChild( tr8Element );
+  tableElement.appendChild( tr8Element );
 
   const th2Element = document.createElement( 'th' );
   tr8Element.appendChild( th2Element );
@@ -132,6 +132,7 @@ addNewShopForm.addEventListener( 'submit', function ( event ){
 
   event.preventDefault();
 
+  tableElement.removeChild( tableElement.lastChild );
 
 
   const shopLocation = event.target.shopLocation.value;
@@ -159,4 +160,5 @@ for( let i = 0; i < Shop.allShop.length; i++ ){
 }
 
 printTableFooter();
-tableElement.removeChild( tableElement.lastChild );
+
+console.log(tableElement);
