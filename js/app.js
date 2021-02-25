@@ -8,16 +8,6 @@ const ParentElement = document.getElementById( 'shops' );//creat the table
 const tableElement = document.createElement( 'table' );
 ParentElement.appendChild( tableElement );
 
-const theadElement = document.createElement( 'thead' );//creat the table header
-tableElement.appendChild( theadElement );
-
-const tbodyElement = document.createElement( 'tbody' );//creat the table body
-tableElement.appendChild( tbodyElement );
-
-const tfootElement = document.createElement( 'tfoot' );//creat the table footer
-tableElement.appendChild( tfootElement );
-
-
 function Shop( lacation, minCustomers, maxCustomers, avgCookieSale ) {
   this.lacation = lacation;
   this.minCustomers = minCustomers;
@@ -44,15 +34,12 @@ Shop.prototype.getNumberOfCookiesPerHour = function () {
 Shop.prototype.render = function () {
   this.getNumberOfCookiesPerHour();
 
-  const tbodyElement = document.createElement( 'tbody' );
-  tableElement.appendChild( tbodyElement );
-
   const tr2Element = document.createElement( 'tr' );
-  tbodyElement.appendChild( tr2Element );
+  tableElement.appendChild( tr2Element );
 
-  const thElement = document.createElement( 'th' );
-  tr2Element.appendChild( thElement );
-  thElement.textContent = this.lacation;
+  const tdElement = document.createElement( 'td' );
+  tr2Element.appendChild( tdElement );
+  tdElement.textContent = this.lacation;
 
   for ( let i = 0; i < this.NumberOfCookiesPerHour.length; i++ ) {
     const tdElement = document.createElement( 'td' );
@@ -67,11 +54,8 @@ Shop.prototype.render = function () {
 // Function to print table header
 function printTableHeader() {
 
-  const theadElement = document.createElement( 'thead' );
-  tableElement.appendChild( theadElement );
-
   const tr1Element = document.createElement( 'tr' );
-  theadElement.appendChild( tr1Element );
+  tableElement.appendChild( tr1Element );
   const thElement = document.createElement( 'th' );
   tr1Element.appendChild( thElement );
   thElement.textContent = 'Location';
@@ -90,7 +74,7 @@ function printTableHeader() {
 function printTableFooter() {
 
   const tr8Element = document.createElement( 'tr' );
-  tfootElement.appendChild( tr8Element );
+  tableElement.appendChild( tr8Element );
 
   const th2Element = document.createElement( 'th' );
   tr8Element.appendChild( th2Element );
@@ -117,22 +101,11 @@ function printTableFooter() {
 
 }
 
-// main programe execution start here
-//creating shops objects//
-const seattle = new Shop( 'seattle', 23, 65, 6.3 );
-const tokyo = new Shop( 'tokyo', 3, 24, 1.2 );
-const dubai = new Shop( 'dubai', 11, 38, 3.7 );
-const paris = new Shop( 'paris', 23, 38, 2.3 );
-const lima = new Shop( 'lima', 2, 16, 4.6 );
-
-
 const addNewShopForm = document.getElementById( 'addNewShop' );
-
 addNewShopForm.addEventListener( 'submit', function ( event ){
-
   event.preventDefault();
 
-
+  tableElement.removeChild( tableElement.lastChild );
 
   const shopLocation = event.target.shopLocation.value;
   const shopMinCustomers = event.target.shopMinCustomers.value;
@@ -146,17 +119,18 @@ addNewShopForm.addEventListener( 'submit', function ( event ){
 } );
 
 
-printTableHeader();
+// main programe execution start here
+//creating shops objects//
+const seattle = new Shop( 'seattle', 23, 65, 6.3 );
+const tokyo = new Shop( 'tokyo', 3, 24, 1.2 );
+const dubai = new Shop( 'dubai', 11, 38, 3.7 );
+const paris = new Shop( 'paris', 23, 38, 2.3 );
+const lima = new Shop( 'lima', 2, 16, 4.6 );
 
-// seattle.render();
-// tokyo.render();
-// dubai.render();
-// paris.render();
-// lima.render();
+printTableHeader();
 
 for( let i = 0; i < Shop.allShop.length; i++ ){
   Shop.allShop[i].render();
 }
 
 printTableFooter();
-tableElement.removeChild( tableElement.lastChild );
