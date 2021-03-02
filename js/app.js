@@ -103,6 +103,7 @@ function printTableFooter() {
 
 const addNewShopForm = document.getElementById( 'addNewShop' );
 addNewShopForm.addEventListener( 'submit', function ( event ){
+  totals = 0;
   event.preventDefault();
 
   tableElement.removeChild( tableElement.lastChild );
